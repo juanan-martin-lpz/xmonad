@@ -1,0 +1,7 @@
+# Solo xmonad.hs y xmobar.hs
+
+*.dyn*
+*.hi
+*.o
+*.errors
+*x86*
