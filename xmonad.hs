@@ -78,9 +78,16 @@ import XMonad.Layout.Spacing
 -- import XMonad.Hooks.InsertPosition
 import XMonad.Layout.Dwindle
 
+
+import XMonad.Config.Kde
+
 -- Aplicaciones
 
-myTerminal = "alacritty"
+xmodmapConfig = "xmodmap ~/.Xmodmap"
+
+-- myTerminal = "alacritty"
+myTerminal = "kitty"
+
 -- myTerminal = "termite"
 --myStatusBar = "polybar aenami --log=error"
 myStatusBar = "xmobar -o /home/blackraider/.xmobarrc"
@@ -103,7 +110,7 @@ myHome = "/home/blackraider"
 
 myTray = "stalonetray"
 
-myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "Steam", "Discord"]
 
 myTabConfig = def { activeColor = "#556064"
                   , inactiveColor = "#2F3D44"
@@ -119,8 +126,8 @@ myTabConfig = def { activeColor = "#556064"
 
 
 myLayout = avoidStruts $ -- layoutHook defaultConfig $
-  tiled
-  ||| noBorders (tabbed shrinkText myTabConfig)
+  noBorders (tabbed shrinkText myTabConfig)
+  ||| tiled
   ||| Mirror tiled
   ||| noBorders Full
   ||| twopane
@@ -178,9 +185,11 @@ main = do
 
   xnvidia <- spawn myTearFlickerCmd;
 
+  xmodmap <- spawn xmodmapConfig;
 
   -- XMonad
   xmonad $ ewmh $ docks $ def
+  --xmonad kdeConfig
     { terminal           = myTerminal
     , XMonad.modMask = mod4Mask
     , focusFollowsMouse  = True

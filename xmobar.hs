@@ -1,4 +1,4 @@
-Config { font = "xft:Dina:pixelsize=13"
+Config { font = "xft:Cousine:pixelsize=13"
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 100
